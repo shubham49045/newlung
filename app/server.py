@@ -9,7 +9,7 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
-export_file_url = 'https://www.dropbox.com/s/6bgq8t6yextloqp/trained_model.pkl?raw=1'
+export_file_url = 'https://drive.google.com/file/d/1-0KLSsoobSt4VUZyqSqZBExXuD7fH9Ts/view?usp=share_link'
 export_file_name = 'trained_model.pkl'
 
 classes = ['lung adenocarcinomas', 'benign lung tissues', ' lung squamous cell carcinomas']
