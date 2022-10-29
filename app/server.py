@@ -12,7 +12,7 @@ from starlette.staticfiles import StaticFiles
 export_file_url = 'https://drive.google.com/file/d/1-0KLSsoobSt4VUZyqSqZBExXuD7fH9Ts/view?usp=share_link'
 export_file_name = 'trained_model.pkl'
 
-classes = ['lung adenocarcinomas', 'benign lung tissues', ' lung squamous cell carcinomas']
+classes = {'lung_aca':'lung adenocarcinomas', 'lung_n':'benign lung tissues', 'lung_scc':' lung squamous cell carcinomas'}
 path = Path(__file__).parent
 
 app = Starlette()
@@ -60,8 +60,8 @@ async def analyze(request):
     img_data = await request.form()
     img_bytes = await (img_data['file'].read())
     img = open_image(BytesIO(img_bytes))
-    prediction = learn.predict(img)[0]
-    return JSONResponse({'result': str(prediction)})
+    prediction = classes[str(learn.predict(img)[0])]
+    return JSONResponse({'result': prediction})
 
 
 if __name__ == '__main__':
